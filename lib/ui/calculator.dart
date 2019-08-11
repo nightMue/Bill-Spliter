@@ -58,7 +58,6 @@ class _CalculatorState extends State<Calculator> {
             //CustomSliderImplementation(),
             //SizedBox(height: 25,),
             PercentButtons(logicController: logicController, notifyParent: refresh,),
-            //SizedBox(height: 25,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

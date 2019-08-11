@@ -15,11 +15,6 @@ class _TopBarState extends State<TopBar> {
 
   Controller logicController;
 
-  //String total = "\$88.00";
-  //String bill = "\$80.00";
-  //String friends = "4";
-  //String tips = "\$8.00";
-
   @override
   Widget build(BuildContext context) {
     return Padding(
