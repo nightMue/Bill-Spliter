@@ -28,8 +28,9 @@ class Controller {
 
   void updateTipPercent(int percent) {
     _tips = _bill * (percent * 0.01);
-    tipsString = "\$" + _tips.toStringAsPrecision(4);
+    tipsString = "\$" + _tips.toStringAsFixed(2);
     tipsLabel = "TIP (" + percent.toString() + "%)";
+    updateTotal();
   }
 
   void updateBillKeyPress(String key) {
@@ -48,7 +49,7 @@ class Controller {
 
   void updateTotal() {
     _total = _bill + _tips;
-    totalString = "\$" + _total.toString();
+    totalString = "\$" + _total.toStringAsFixed(2);
   }
 
   void backKeyPress() {
