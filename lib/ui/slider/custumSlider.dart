@@ -6,9 +6,9 @@ class CustomSliderImplementation extends StatefulWidget {
 }
 
 class _CustomSliderImplementationState extends State<CustomSliderImplementation> {
-  Color positiveColor = new Color(0xFFEF0078);
-  Color negetiveColor = new Color(0xFFFFFFFF);
-  double percentage  = 0.0;
+  Color positiveColor = Color.fromRGBO(57, 153, 66, 1);
+  Color negetiveColor = Colors.grey.shade300;
+  double percentage  = 50.0;
 
   double initial = 0.0;
 
@@ -32,18 +32,20 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         percentage: this.percentage,
         positiveColor: positiveColor,
         negetiveColor: negetiveColor,
+        totalWidth: MediaQuery.of(context).size.width - 50,
       ),
     );
   }
 }
 
 class CustomSlider extends StatelessWidget {
-  double totalWidth = 200.0;
+  double totalWidth;
   double percentage;
   Color positiveColor;
   Color negetiveColor;
 
   CustomSlider({
+    this.totalWidth,
     this.percentage,
     this.positiveColor,
     this.negetiveColor
@@ -53,21 +55,69 @@ class CustomSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: totalWidth + 4.0,
-      height: 30.0,
+      height: 40.0,
       decoration: BoxDecoration(
         color: negetiveColor,
-        border: Border.all(
-          color: Colors.black,
-          width: 2.0
-        )
+        //border: Border.all(
+        //  color: Colors.black,
+        //  width: 2.0
+        //)
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Container(
-            color: positiveColor,
-            width: (percentage/100)*totalWidth,
+          Stack(
+            children: <Widget>[
+              Container(
+                //height: 30,
+                color: positiveColor,
+                width: (percentage/100)*totalWidth,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    color: Colors.red,
+                    width: 10.0,
+                    height: 60,
+                  ),
+                ),
+              ),
+              Container(
+                width: totalWidth+4,
+                child: Row(
+                  children: <Widget>[
+                    Stack(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
+                            child: Icon(Icons.people_outline, color: Colors.white,),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB((totalWidth - 40), 5, 10, 5),
+                            child: Text(
+                              percentage.toStringAsFixed(0),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0
+                              ), 
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                    
+                    
+                  ],
+                ),
+              ),
+            ],
           ),
+          
         ],
       ),
     );
