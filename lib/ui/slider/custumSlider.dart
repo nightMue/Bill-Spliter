@@ -1,6 +1,12 @@
+import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
 
 class CustomSliderImplementation extends StatefulWidget {
+  CustomSliderImplementation({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
+
+  final Function notifyParent;
+  final Controller logicController;
+  
   @override
   _CustomSliderImplementationState createState() => _CustomSliderImplementationState();
 }
@@ -12,17 +18,29 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
 
   double initial = 0.0;
 
+  double tempPos;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (DragStartDetails details) {
         initial = details.globalPosition.dx;
+        tempPos = details.globalPosition.dx;
       },
       onPanUpdate: (DragUpdateDetails details) {
+        if(tempPos > details.globalPosition.dx) {
+          print("Moving left");
+        } else if (tempPos < details.globalPosition.dx) {
+          print("Moving right");
+        }
+
+
         double distance = details.globalPosition.dx - initial;
-        double percentageAddition = distance / 200;
+        double percentageAddition = distance / MediaQuery.of(context).size.width; //200
         setState(() {
           percentage = (percentage + percentageAddition).clamp(0.0, 100.0);
+          widget.logicController.updateFriends((percentage/10).round());
+          widget.notifyParent();
         });
       },
       onPanEnd: (DragEndDetails details)  {
@@ -99,7 +117,7 @@ class CustomSlider extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB((totalWidth - 40), 5, 10, 5),
                             child: Text(
-                              percentage.toStringAsFixed(0),
+                              (percentage/10).toStringAsFixed(0),
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,

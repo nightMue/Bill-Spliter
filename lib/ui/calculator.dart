@@ -56,7 +56,7 @@ class _CalculatorState extends State<Calculator> {
           children: <Widget>[
             SizedBox(height: 30,),
             //NumSlider(),
-            CustomSliderImplementation(),
+            CustomSliderImplementation(logicController: logicController, notifyParent: refresh),
             //SizedBox(height: 25,),
             PercentButtons(logicController: logicController, notifyParent: refresh,),
             Row(

@@ -13,7 +13,7 @@ class Controller {
   Controller() {
     totalString = "\$";
     billString = "\$";
-    friendsString = "0";
+    friendsString = "5";
     tipsString = "\$0.00";
     tipsLabel = "TIP (0%)";
     _total = 0;
