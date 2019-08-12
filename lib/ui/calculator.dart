@@ -3,7 +3,6 @@ import 'package:bill_spliter/ui/calculator/customNumberButton.dart';
 import 'package:bill_spliter/ui/calculator/percents.dart';
 import 'package:bill_spliter/ui/slider/custumSlider.dart';
 import 'package:flutter/material.dart';
-import 'calculator/slider.dart';
 
 class Calculator extends StatefulWidget {
   Calculator({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
@@ -55,9 +54,7 @@ class _CalculatorState extends State<Calculator> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             SizedBox(height: 30,),
-            //NumSlider(),
             CustomSliderImplementation(logicController: logicController, notifyParent: refresh),
-            //SizedBox(height: 25,),
             PercentButtons(logicController: logicController, notifyParent: refresh,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
