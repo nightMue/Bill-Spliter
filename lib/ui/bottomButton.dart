@@ -23,7 +23,7 @@ class _BottomButtonState extends State<BottomButton> {
           topRight: const Radius.circular(40.0)
         );
         editing = false;
-        _showToast(context);
+        //_showToast(context);
         widget.logicController.toggleEditing();
         widget.notifyParent();
       } else {
@@ -78,7 +78,7 @@ class _BottomButtonState extends State<BottomButton> {
             child: Center(
               child: (editing)? _textView(context) : _iconView(context)
             ),
-            duration: Duration(milliseconds: 800),
+            duration: Duration(milliseconds: 600),
             curve: Curves.fastOutSlowIn,
           ),
         ),
@@ -109,9 +109,14 @@ class _BottomButtonState extends State<BottomButton> {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
       SnackBar(
-        content: Text("Splitting bill..."),
+        content: Text("Splitting bill...",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+          ),
+        ),
         duration: Duration(milliseconds: 700),
-        backgroundColor: Color.fromRGBO(57, 153, 66, 0.4),
+        backgroundColor: Color.fromRGBO(57, 153, 66, 0.5),
       )
     );
   }

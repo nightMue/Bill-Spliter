@@ -48,11 +48,22 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
       color: Colors.transparent,
       child: Stack(
         children: <Widget>[
           Container(
-            color: Colors.transparent,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.grey.shade100,
+              boxShadow: [
+              BoxShadow(
+                color: Color.fromRGBO(57, 153, 66, 0.5),
+                offset: Offset(0.0, 20.0),
+                blurRadius: 20.0
+              )
+            ], 
+            ),
             height: animation.value,
             child:Visibility(
               visible: (widget.logicController.displayReady) ? true : false,
@@ -73,11 +84,11 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
   {
     return Column(
       children: <Widget>[
-        Center(child: Text("ITEM"),),
-        Center(child: Text("ITEM"),),
-        Center(child: Text("ITEM"),),
-        Center(child: Text("ITEM"),),
-        Center(child: Text("ITEM"),),
+        //Center(child: Text("ITEM"),),
+        //Center(child: Text("ITEM"),),
+        //Center(child: Text("ITEM"),),
+        //Center(child: Text("ITEM"),),
+        //Center(child: Text("ITEM"),),
       ],
     );
   }
