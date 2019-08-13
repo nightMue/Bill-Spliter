@@ -52,31 +52,33 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
       child: Stack(
         children: <Widget>[
           Container(
-            color: Colors.yellow,
+            color: Colors.transparent,
             height: animation.value,
-            //child: Container(
-            //  padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
-            //  child: Column(
-            //    children: <Widget>[
-            //      Center(child: Text("HELLO"),),
-            //      Center(child: Text("HELLO"),),
-            //      Center(child: Text("HELLO"),),
-            //     Center(child: Text("HELLO"),),
-            //    ],
-            //  ),
-            //),
             child:Visibility(
               visible: (widget.logicController.displayReady) ? true : false,
               child: FutureBuilder(
                 future: Future.delayed(Duration(milliseconds: 1)),
                 builder: (c, s) => s.connectionState == ConnectionState.done
-                  ? Center( child: Text("Loaded"))
-                  : Center( child: Text("Splitting bill..."))
+                  ? Center( child: _splitView(context))
+                  : Center( child: Text(""))
               ),
             ),
           )
         ],
       )
+    );
+  }
+
+  Widget _splitView(BuildContext context)
+  {
+    return Column(
+      children: <Widget>[
+        Center(child: Text("ITEM"),),
+        Center(child: Text("ITEM"),),
+        Center(child: Text("ITEM"),),
+        Center(child: Text("ITEM"),),
+        Center(child: Text("ITEM"),),
+      ],
     );
   }
 

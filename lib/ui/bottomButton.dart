@@ -23,6 +23,7 @@ class _BottomButtonState extends State<BottomButton> {
           topRight: const Radius.circular(40.0)
         );
         editing = false;
+        _showToast(context);
         widget.logicController.toggleEditing();
         widget.notifyParent();
       } else {
@@ -100,6 +101,18 @@ class _BottomButtonState extends State<BottomButton> {
         fontWeight: FontWeight.w600,
         fontSize: 15
       ),
+    );
+  }
+
+  void _showToast(BuildContext context)
+  {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: Text("Splitting bill..."),
+        duration: Duration(milliseconds: 700),
+        backgroundColor: Color.fromRGBO(57, 153, 66, 0.4),
+      )
     );
   }
 }
