@@ -1,6 +1,7 @@
 import 'package:bill_spliter/core/controller.dart';
 import 'package:bill_spliter/ui/bottomButton.dart';
 import 'package:bill_spliter/ui/calculator.dart';
+import 'package:bill_spliter/ui/split/split.dart';
 import 'package:bill_spliter/ui/topBar.dart';
 import 'package:flutter/material.dart';
 
@@ -46,14 +47,21 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           TopBar(logicController),
+          //(logicController.isEditing())
+          //  ? Expanded(
+          //    child: Calculator(notifyParent: refresh, logicController: logicController,),
+          //  )
+          //  : SplitView(notifyParent: refresh, logicController: logicController,),
+            
           Expanded(
-            child: Calculator(notifyParent: refresh, logicController: logicController,),
+            child: (logicController.isEditing()) ? Calculator(notifyParent: refresh, logicController: logicController,) 
+              : SplitView(notifyParent: refresh, logicController: logicController,),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: BottomButton(),
+              child: BottomButton(notifyParent: refresh, logicController: logicController,),
             ),
           )
           ],

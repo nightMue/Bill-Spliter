@@ -1,5 +1,8 @@
 class Controller {
 
+  bool _editing;
+  bool displayReady;
+
   String totalString;
   String billString;
   String friendsString;
@@ -19,6 +22,18 @@ class Controller {
     _total = 0;
     _bill = 0;
     _tips = 0;
+    _editing = true;
+    displayReady = true;
+  }
+
+  bool isEditing()
+  {
+    return _editing;
+  }
+
+  void toggleEditing()
+  {
+    _editing = !_editing;
   }
 
   void updateFriends(int numFriends)

@@ -1,6 +1,12 @@
+import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatefulWidget {
+  BottomButton({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
+
+  final Function notifyParent;
+  final Controller logicController;
+
   @override
   _BottomButtonState createState() => _BottomButtonState();
 }
@@ -17,6 +23,8 @@ class _BottomButtonState extends State<BottomButton> {
           topRight: const Radius.circular(40.0)
         );
         editing = false;
+        widget.logicController.toggleEditing();
+        widget.notifyParent();
       } else {
         _paddingBottom = 0.0;
         _width = MediaQuery.of(context).size.width - 20;
@@ -27,6 +35,8 @@ class _BottomButtonState extends State<BottomButton> {
         );
         //_borderRadius = BorderRadius.circular(8);
         editing = true;
+        widget.logicController.toggleEditing();
+        widget.notifyParent();
       }
     });
   }
