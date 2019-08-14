@@ -9,7 +9,9 @@ class TopBar extends StatefulWidget {
   @override
   _TopBarState createState() => _TopBarState(logicController);
 }
-
+/**
+ * Need to update on load
+ */
 class _TopBarState extends State<TopBar> {
   _TopBarState(this.logicController);
 
