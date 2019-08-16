@@ -8,8 +8,11 @@ class FriendView extends StatefulWidget {
 class _FriendViewState extends State<FriendView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return GestureDetector(
+      onTap: () => print("FRIEND DRAG"),
+      child: Container(
+        
+      ),
     );
   }
 }
