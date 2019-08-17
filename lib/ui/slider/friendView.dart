@@ -23,7 +23,7 @@ class _FriendViewState extends State<FriendView> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-          //padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
           color: widget.color,
           child: Stack(
             children: <Widget>[
@@ -71,7 +71,6 @@ class _FriendViewState extends State<FriendView> {
                                   ),
                                   shape: BoxShape.circle),
                               child: Center(
-                               // padding: EdgeInsets.fromLTRB(0, 0, 10, 10),
                                 child: Icon(
                                   (locked) ? Icons.lock : Icons.drag_handle,
                                   color: (locked)

@@ -54,6 +54,7 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
       child: Stack(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.grey.shade100,
