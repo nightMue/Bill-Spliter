@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bill_spliter/core/controller.dart';
+import 'package:bill_spliter/ui/slider/friendView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
@@ -84,11 +85,10 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
   {
     return Column(
       children: <Widget>[
-        //Center(child: Text("ITEM"),),
-        //Center(child: Text("ITEM"),),
-        //Center(child: Text("ITEM"),),
-        //Center(child: Text("ITEM"),),
-        //Center(child: Text("ITEM"),),
+        FriendView("FRIEND A", Colors.transparent),
+        FriendView("FRIEND B", Colors.transparent),
+        FriendView("FRIEND C", Colors.transparent),
+        FriendView("FRIEND D", Colors.transparent),
       ],
     );
   }
