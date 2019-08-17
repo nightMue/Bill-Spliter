@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Bill Spliter",
       theme: ThemeData(backgroundColor: Color(0xffe7e9f0), fontFamily: 'Raleway'),
-      //home: Home(title: "Shoe Box",),
       home: Home(),
     );
   }
