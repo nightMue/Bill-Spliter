@@ -63,19 +63,20 @@ class _FriendViewState extends State<FriendView> {
                               ),
                             ),
                             Container(
-                              decoration: (locked)?  null : BoxDecoration(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Colors.black,
                                   ),
                                   shape: BoxShape.circle),
-                              color: (locked)
-                                  ? Color.fromRGBO(57, 153, 66, 1)
-                                  : null,
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                              child: Center(
+                               // padding: EdgeInsets.fromLTRB(0, 0, 10, 10),
                                 child: Icon(
                                   (locked) ? Icons.lock : Icons.drag_handle,
-                                  color: (locked) ? Colors.white: Colors.black,
+                                  color: (locked)
+                                      ? Color.fromRGBO(57, 153, 66, 1)
+                                      : Colors.black,
                                   size: 25.0,
                                 ),
                               ),
