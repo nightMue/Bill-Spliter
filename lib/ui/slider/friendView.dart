@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FriendView extends StatefulWidget {
-  FriendView(this.index, this.color);
+  FriendView(this.index, this.color, this.price);
 
   final Color color;
   final String index;
+  final String price;
 
   @override
   _FriendViewState createState() => _FriendViewState();
@@ -40,7 +41,7 @@ class _FriendViewState extends State<FriendView> {
                           fontSize: 15.0),
                     ),
                     Text(
-                      "\$21",
+                      widget.price,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

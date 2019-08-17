@@ -84,14 +84,26 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
 
   Widget _splitView(BuildContext context)
   {
+    // make loop to create these based on number of friends
     return Column(
-      children: <Widget>[
-        FriendView("FRIEND A", Colors.transparent),
-        FriendView("FRIEND B", Colors.transparent),
-        FriendView("FRIEND C", Colors.transparent),
-        FriendView("FRIEND D", Colors.transparent),
-      ],
+      //children: <Widget>[
+      //  FriendView("FRIEND A", Colors.transparent, "\$21"),
+      //  FriendView("FRIEND B", Colors.transparent, "\$21"),
+      //  FriendView("FRIEND C", Colors.transparent, "\$21"),
+      //  FriendView("FRIEND D", Colors.transparent, "\$21"),
+      //],
+      children: _getSplits(int.parse(widget.logicController.friendsString))
     );
+  }
+
+  List<Widget> _getSplits(int number)
+  {
+    List<Widget> splits = List<Widget>();
+    for(var i = 0; i < number; i++)
+    {
+      splits.add(FriendView("FRIEND $i", Colors.transparent, "\$21"));
+    }
+    return splits;
   }
 
   @override
