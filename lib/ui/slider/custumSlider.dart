@@ -1,6 +1,10 @@
 import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
 
+/**
+ * Make this a max of people for simplicity with spilts
+ */
+
 class CustomSliderImplementation extends StatefulWidget {
   CustomSliderImplementation({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
 
