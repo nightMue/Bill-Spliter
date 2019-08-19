@@ -19,6 +19,8 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
   Color positiveColor = Color.fromRGBO(57, 153, 66, 1);
   Color negetiveColor = Colors.grey.shade300;
   double percentage  = 50.0;
+  
+  double modDivisor = 5;
 
   double initial = 0.0;
 
