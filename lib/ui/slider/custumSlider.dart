@@ -45,21 +45,22 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         double percentageAddition = distance / MediaQuery.of(context).size.width; //200
         setState(() {
           percentage = (percentage + percentageAddition).clamp(0.0, 100.0);
+          // need better algorithm for this
           int temp = (percentage/10).round();
-          int num = 0;
+          int freindNum = 0;
           if(temp <= 2) {
-            num = 1;
+            freindNum = 1;
           } else if (temp > 2 && temp <= 4) {
-            num = 2;
+            freindNum = 2;
           } else if (temp > 4 && temp <= 6) {
-            num = 3;
+            freindNum = 3;
           } else if (temp > 6 && temp <= 8) {
-            num = 4;
+            freindNum = 4;
           } else {
-            num = 5;
+            freindNum = 5;
           }
           //widget.logicController.updateFriends((percentage/10).round());
-          widget.logicController.updateFriends(num);
+          widget.logicController.updateFriends(freindNum);
           widget.notifyParent();
         });
       },
