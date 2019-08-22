@@ -12,11 +12,12 @@ class Controller {
   double _total;
   double _bill;
   double _tips;
+  double _sliderPercentage;
 
   Controller() {
     totalString = "\$";
     billString = "\$";
-    friendsString = "5";
+    friendsString = "3";
     tipsString = "\$0.00";
     tipsLabel = "TIP (0%)";
     _total = 0;
@@ -24,6 +25,22 @@ class Controller {
     _tips = 0;
     _editing = true;
     displayReady = true;
+    _sliderPercentage = 50.0;
+  }
+
+  int getFriends()
+  {
+    return int.parse(friendsString);
+  }
+
+  double getSliderPercentage()
+  {
+    return _sliderPercentage;
+  }
+
+  void updateSliderPercentage(double newPercentage)
+  {
+    _sliderPercentage = newPercentage;
   }
 
   bool isEditing()
