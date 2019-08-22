@@ -1,3 +1,5 @@
+import 'package:bill_spliter/utils/stringConverters.dart';
+
 class Controller {
 
   bool _editing;
@@ -60,8 +62,10 @@ class Controller {
 
   void updateTipPercent(int percent) {
     _tips = _bill * (percent * 0.01);
-    tipsString = "\$" + _tips.toStringAsFixed(2);
-    tipsLabel = "TIP (" + percent.toString() + "%)";
+    //tipsString = "\$" + _tips.toStringAsFixed(2);
+    tipsString = StringConverters.genTipsString(_tips);
+    //tipsLabel = "TIP (" + percent.toString() + "%)";
+    tipsLabel = StringConverters.genTipsLabel(percent);
     updateTotal();
   }
 
@@ -81,7 +85,8 @@ class Controller {
 
   void updateTotal() {
     _total = _bill + _tips;
-    totalString = "\$" + _total.toStringAsFixed(2);
+    //totalString = "\$" + _total.toStringAsFixed(2);
+    totalString = StringConverters.genTotalString(_total);
   }
 
   void backKeyPress() {
