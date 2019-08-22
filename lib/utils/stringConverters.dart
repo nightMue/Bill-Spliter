@@ -9,7 +9,7 @@ class StringConverters {
   }
 
   static String genTipsLabel(int percent) {
-    return "TIP (" + percent.toString() + "%";
+    return "TIP (" + percent.toString() + "%)";
   }
 
 }
