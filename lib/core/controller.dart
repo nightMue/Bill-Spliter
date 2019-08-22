@@ -16,6 +16,8 @@ class Controller {
   double _tips;
   double _sliderPercentage;
 
+  int _tipPercent;
+
   Controller() {
     totalString = "\$";
     billString = "\$";
@@ -28,6 +30,12 @@ class Controller {
     _editing = true;
     displayReady = true;
     _sliderPercentage = 50.0;
+    _tipPercent = 0;
+  }
+
+  int getTipPercent()
+  {
+    return _tipPercent;
   }
 
   int getFriends()
@@ -61,6 +69,7 @@ class Controller {
   }
 
   void updateTipPercent(int percent) {
+    _tipPercent = percent;
     _tips = _bill * (percent * 0.01);
     //tipsString = "\$" + _tips.toStringAsFixed(2);
     tipsString = StringConverters.genTipsString(_tips);

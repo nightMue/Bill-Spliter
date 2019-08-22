@@ -63,10 +63,24 @@ class _PercentButtonsState extends State<PercentButtons> {
 
   @override
   void initState() {
-    _zero = true;
+    _zero = false;
     _ten = false;
     _twenty = false;
     _thirdy = false;
+    switch (widget.logicController.getTipPercent()) {
+      case 0:
+        _zero = true;
+        break;
+      case 10:
+        _ten = true;
+        break;
+      case 20:
+        _twenty = true;
+        break;
+      case 30:
+        _thirdy = true;
+        break;
+    }
     super.initState();
   }
 
