@@ -18,14 +18,19 @@ class CustomSliderImplementation extends StatefulWidget {
 class _CustomSliderImplementationState extends State<CustomSliderImplementation> {
   Color positiveColor = Color.fromRGBO(57, 153, 66, 1);
   Color negetiveColor = Colors.grey.shade300;
-  double percentage  = 50.0;
-  
-  double modDivisor = 5;
+  //double percentage  = 50.0;
+  double percentage;
 
+  int freindNum;
   double initial = 0.0;
-
   double tempPos;
 
+  @override
+  void initState() {
+    freindNum = widget.logicController.getFriends();
+    percentage = widget.logicController.getSliderPercentage();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +52,6 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
           percentage = (percentage + percentageAddition).clamp(0.0, 100.0);
           // need better algorithm for this
           int temp = (percentage/10).round();
-          int freindNum = 0;
           if(temp <= 2) {
             freindNum = 1;
           } else if (temp > 2 && temp <= 4) {
@@ -61,6 +65,7 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
           }
           //widget.logicController.updateFriends((percentage/10).round());
           widget.logicController.updateFriends(freindNum);
+          widget.logicController.updateSliderPercentage(percentage);
           widget.notifyParent();
         });
       },
@@ -72,18 +77,21 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         positiveColor: positiveColor,
         negetiveColor: negetiveColor,
         totalWidth: MediaQuery.of(context).size.width - 50,
+        friendNum: freindNum,
       ),
     );
   }
 }
 
 class CustomSlider extends StatelessWidget {
+  int friendNum;
   double totalWidth;
   double percentage;
   Color positiveColor;
   Color negetiveColor;
 
   CustomSlider({
+    this.friendNum,
     this.totalWidth,
     this.percentage,
     this.positiveColor,
@@ -138,7 +146,8 @@ class CustomSlider extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB((totalWidth - 40), 5, 10, 5),
                             child: Text(
-                              (percentage/10).toStringAsFixed(0),
+                              //(percentage/10).toStringAsFixed(0),
+                              friendNum.toString(),
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
