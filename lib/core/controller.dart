@@ -16,9 +16,12 @@ class Controller {
   double _tips;
   double _sliderPercentage;
 
+  List<double>individualPrices;
+
   int _tipPercent;
 
   Controller() {
+    individualPrices = List<double>();
     totalString = "\$";
     billString = "\$";
     friendsString = "3";
