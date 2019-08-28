@@ -39,11 +39,11 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         tempPos = details.globalPosition.dx;
       },
       onPanUpdate: (DragUpdateDetails details) {
-        if(tempPos > details.globalPosition.dx) {
-          print("Moving left");
-        } else if (tempPos < details.globalPosition.dx) {
-          print("Moving right");
-        }
+        //if(tempPos > details.globalPosition.dx) {
+        //  print("Moving left");
+        //} else if (tempPos < details.globalPosition.dx) {
+        //  print("Moving right");
+        //}
 
 
         double distance = details.globalPosition.dx - initial;
