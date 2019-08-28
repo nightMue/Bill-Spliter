@@ -101,7 +101,7 @@ class _SplitViewState extends State<SplitView> with TickerProviderStateMixin {
     List<Widget> splits = List<Widget>();
     for(var i = 0; i < number; i++)
     {
-      splits.add(FriendView("FRIEND $i", Colors.transparent, "\$21"));
+      splits.add(FriendView("FRIEND ${i+1}", Colors.transparent, widget.logicController.individualPrices[i].toString()));
     }
     return splits;
   }

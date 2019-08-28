@@ -64,6 +64,7 @@ class Controller {
   void toggleEditing()
   {
     _editing = !_editing;
+    splitBillEvenly();
   }
 
   void updateFriends(int numFriends)
@@ -106,5 +107,35 @@ class Controller {
     billString = "\$";
     _total = 0;
     totalString = "\$";
+  }
+
+  void splitBillEvenly() {
+    individualPrices.clear();
+    double evenSplit = double.parse((_total / int.parse(friendsString)).toStringAsFixed(2));
+    if(ensureSplitCoversBill(evenSplit)) {
+      addPricesToList(evenSplit);
+    } else {
+      while(ensureSplitCoversBill(evenSplit) == false)
+      {
+        // add 1 cent and check again
+      evenSplit += 0.01;
+      }
+      addPricesToList(evenSplit);
+    }
+  }
+
+  void addPricesToList(double price)
+  {
+    for(int i = 0; i < int.parse(friendsString); i++) {
+      individualPrices.add(price);
+    }
+    //print(individualPrices);
+  }
+
+  bool ensureSplitCoversBill(double split){
+    if(split * int.parse(friendsString) >= _total) {
+      return true;
+    }
+    return false;
   }
 }
