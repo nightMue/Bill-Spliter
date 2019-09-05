@@ -1,3 +1,4 @@
+import 'package:bill_spliter/core/calculator_controller.dart';
 import 'package:bill_spliter/core/controller.dart';
 import 'package:bill_spliter/ui/calculator/customNumberButton.dart';
 import 'package:bill_spliter/ui/calculator/percents.dart';
@@ -16,9 +17,14 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  _CalculatorState(this.logicController);
+  //_CalculatorState(this.logicController);
 
-  Controller logicController;
+  //Controller logicController;
+  _CalculatorState(Controller logicController) {
+    this.calculatorController = CalculatorController(logicController);
+  }
+
+  CalculatorController calculatorController;
 
   //bool canVibrate = await Vibrate.canVibrate;
 
@@ -30,25 +36,33 @@ class _CalculatorState extends State<Calculator> {
   pressed(int number)
   {
     Vibrate.feedback(FeedbackType.light);
-    logicController.updateBillKeyPress(number.toString());
+    //logicController.updateBillKeyPress(number.toString());
+    calculatorController.updateBillKeyPress(number);
     widget.notifyParent();
   }
 
   _pressedDecimal() 
   {
-    if(!logicController.decimalUsed)
+    if(calculatorController.decimalKeyPress())
     {
       Vibrate.feedback(FeedbackType.light);
-      logicController.updateBillKeyPress(".");
       widget.notifyParent();
-      logicController.decimalUsed = true;
     }
+    
+    //if(!logicController.decimalUsed)
+    //{
+    //  Vibrate.feedback(FeedbackType.light);
+    //  logicController.updateBillKeyPress(".");
+    //  widget.notifyParent();
+    //  logicController.decimalUsed = true;
+    //}
   }
 
   _pressedBack() 
   {
     Vibrate.feedback(FeedbackType.light);
-    logicController.backKeyPress();
+    //logicController.backKeyPress();
+    calculatorController.backKeyPress();
     widget.notifyParent();
   }
 
@@ -64,8 +78,8 @@ class _CalculatorState extends State<Calculator> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             SizedBox(height: 30,),
-            CustomSliderImplementation(logicController: logicController, notifyParent: refresh),
-            PercentButtons(logicController: logicController, notifyParent: refresh,),
+            CustomSliderImplementation(logicController: calculatorController.mainAppController, notifyParent: refresh),
+            PercentButtons(logicController: calculatorController.mainAppController, notifyParent: refresh,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

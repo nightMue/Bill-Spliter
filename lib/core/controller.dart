@@ -2,7 +2,6 @@ import 'package:bill_spliter/utils/stringConverters.dart';
 
 class Controller {
 
-  bool decimalUsed;
   bool _editing;
   bool displayReady;
 
@@ -22,7 +21,6 @@ class Controller {
   int _tipPercent;
 
   Controller() {
-    decimalUsed = false;
     individualPrices = List<double>();
     totalString = "\$";
     billString = "\$";
@@ -84,6 +82,13 @@ class Controller {
     updateTotal();
   }
 
+  void updateTip()
+  {
+    _tips = _bill * (_tipPercent * 0.01);
+    tipsString = StringConverters.genTipsString(_tips);
+    tipsLabel = StringConverters.genTipsLabel(_tipPercent);
+  }
+
   void updateBillKeyPress(String key) {
     billString = billString + key;
     if(billString.length > 1) {
@@ -98,18 +103,20 @@ class Controller {
     updateTotal();
   }
 
-  void updateTotal() {
-    _total = _bill + _tips;
-    //totalString = "\$" + _total.toStringAsFixed(2);
-    totalString = StringConverters.genTotalString(_total);
-  }
-
-  void backKeyPress() {
+  void resetForm() {
     _bill = 0;
     billString = "\$";
     _total = 0;
     totalString = "\$";
-    decimalUsed = false;
+    _tips = 0;
+    tipsString = "\$";
+  }
+
+  void updateTotal() {
+    _total = _bill + _tips;
+    //totalString = "\$" + _total.toStringAsFixed(2);
+    totalString = StringConverters.genTotalString(_total);
+    updateTip();
   }
 
   void splitBillEvenly() {
