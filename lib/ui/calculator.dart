@@ -3,6 +3,7 @@ import 'package:bill_spliter/ui/calculator/customNumberButton.dart';
 import 'package:bill_spliter/ui/calculator/percents.dart';
 import 'package:bill_spliter/ui/slider/custumSlider.dart';
 import 'package:flutter/material.dart';
+import 'package:vibrate/vibrate.dart';
 
 class Calculator extends StatefulWidget {
   Calculator({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
@@ -19,6 +20,8 @@ class _CalculatorState extends State<Calculator> {
 
   Controller logicController;
 
+  //bool canVibrate = await Vibrate.canVibrate;
+
   refresh() {
     widget.notifyParent();
     setState(() {});
@@ -26,18 +29,21 @@ class _CalculatorState extends State<Calculator> {
 
   pressed(int number)
   {
+    Vibrate.feedback(FeedbackType.light);
     logicController.updateBillKeyPress(number.toString());
     widget.notifyParent();
   }
 
   _pressedDecimal() 
   {
+    Vibrate.feedback(FeedbackType.light);
     logicController.updateBillKeyPress(".");
     widget.notifyParent();
   }
 
   _pressedBack() 
   {
+    Vibrate.feedback(FeedbackType.light);
     logicController.backKeyPress();
     widget.notifyParent();
   }

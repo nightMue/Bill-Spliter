@@ -1,6 +1,6 @@
 import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
-
+import 'package:vibrate/vibrate.dart';
 /**
  * Make this a max of people for simplicity with spilts
  */
@@ -35,6 +35,7 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (DragStartDetails details) {
+        Vibrate.feedback(FeedbackType.light);
         initial = details.globalPosition.dx;
         tempPos = details.globalPosition.dx;
       },
@@ -44,7 +45,6 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         //} else if (tempPos < details.globalPosition.dx) {
         //  print("Moving right");
         //}
-
 
         double distance = details.globalPosition.dx - initial;
         double percentageAddition = distance / MediaQuery.of(context).size.width; //200
@@ -70,6 +70,7 @@ class _CustomSliderImplementationState extends State<CustomSliderImplementation>
         });
       },
       onPanEnd: (DragEndDetails details)  {
+        Vibrate.feedback(FeedbackType.light);
         initial = 0.0;
       },
       child: CustomSlider(

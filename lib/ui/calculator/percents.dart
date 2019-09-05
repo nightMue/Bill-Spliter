@@ -1,5 +1,6 @@
 import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:vibrate/vibrate.dart';
 
 class PercentButtons extends StatefulWidget {
   PercentButtons({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
@@ -13,6 +14,7 @@ class PercentButtons extends StatefulWidget {
 
 class _PercentButtonsState extends State<PercentButtons> {
   _selectZero() {
+    Vibrate.feedback(FeedbackType.light);
     widget.logicController.updateTipPercent(0);
     setState(() {
       _zero = true;
@@ -24,6 +26,7 @@ class _PercentButtonsState extends State<PercentButtons> {
   }
 
   _selectTen() {
+    Vibrate.feedback(FeedbackType.light);
     widget.logicController.updateTipPercent(10);
     setState(() {
       _zero = false;
@@ -35,6 +38,7 @@ class _PercentButtonsState extends State<PercentButtons> {
   }
 
   _selectTwenty() {
+    Vibrate.feedback(FeedbackType.light);
     widget.logicController.updateTipPercent(20);
     setState(() {
       _zero = false;
@@ -46,6 +50,7 @@ class _PercentButtonsState extends State<PercentButtons> {
   }
 
   _selectThirdy() {
+    Vibrate.feedback(FeedbackType.light);
     widget.logicController.updateTipPercent(30);
     setState(() {
       _zero = false;

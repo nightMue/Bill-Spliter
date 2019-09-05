@@ -1,5 +1,6 @@
 import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:vibrate/vibrate.dart';
 
 class BottomButton extends StatefulWidget {
   BottomButton({Key key, @required this.notifyParent, @required this.logicController}) : super(key: key);
@@ -13,6 +14,7 @@ class BottomButton extends StatefulWidget {
 
 class _BottomButtonState extends State<BottomButton> {
   _editFunction() {
+    Vibrate.feedback(FeedbackType.medium);
     setState(() {
       if(editing) {
         _paddingBottom = 0.0;
