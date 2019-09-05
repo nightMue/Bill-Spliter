@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bill_spliter/core/controller.dart';
 import 'package:flutter/material.dart';
 
@@ -60,15 +61,28 @@ class _TopBarState extends State<TopBar> {
                         fontSize: 15.0
                       ),
                     ),
-                    Text(
-                      //total,
-                      logicController.totalString,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40.0
+                    SizedBox(
+                      width: (MediaQuery.of(context).size.width / 2),
+                      child: AutoSizeText(
+                        logicController.totalString,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40.0
+                        ),
+                        //maxFontSize: 40.0,
+                        maxLines: 1,
                       ),
-                    )
+                    ),
+                    //Text(
+                      //total,
+                    //  logicController.totalString,
+                    //  style: TextStyle(
+                    //    color: Colors.white,
+                    //    fontWeight: FontWeight.bold,
+                    //    fontSize: 40.0
+                    //  ),
+                    //)
                   ],
                 ),
               ),
@@ -92,7 +106,6 @@ class _TopBarState extends State<TopBar> {
                           ),
                         ),
                         Text(
-                          //bill,
                           logicController.billString,
                           style: TextStyle(
                             color: Colors.white,
@@ -112,9 +125,8 @@ class _TopBarState extends State<TopBar> {
                             fontSize: 13.0,
                             fontWeight: FontWeight.w600
                           ),
-                        ),
+                        ),   
                         Text(
-                          //friends,
                           logicController.friendsString,
                           style: TextStyle(
                             color: Colors.white,

@@ -17,9 +17,7 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  //_CalculatorState(this.logicController);
 
-  //Controller logicController;
   _CalculatorState(Controller logicController) {
     this.calculatorController = CalculatorController(logicController);
   }
@@ -36,7 +34,6 @@ class _CalculatorState extends State<Calculator> {
   pressed(int number)
   {
     Vibrate.feedback(FeedbackType.light);
-    //logicController.updateBillKeyPress(number.toString());
     calculatorController.updateBillKeyPress(number);
     widget.notifyParent();
   }
@@ -48,20 +45,11 @@ class _CalculatorState extends State<Calculator> {
       Vibrate.feedback(FeedbackType.light);
       widget.notifyParent();
     }
-    
-    //if(!logicController.decimalUsed)
-    //{
-    //  Vibrate.feedback(FeedbackType.light);
-    //  logicController.updateBillKeyPress(".");
-    //  widget.notifyParent();
-    //  logicController.decimalUsed = true;
-    //}
   }
 
   _pressedBack() 
   {
     Vibrate.feedback(FeedbackType.light);
-    //logicController.backKeyPress();
     calculatorController.backKeyPress();
     widget.notifyParent();
   }
