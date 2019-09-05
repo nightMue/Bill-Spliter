@@ -2,6 +2,7 @@ import 'package:bill_spliter/utils/stringConverters.dart';
 
 class Controller {
 
+  bool decimalUsed;
   bool _editing;
   bool displayReady;
 
@@ -21,6 +22,7 @@ class Controller {
   int _tipPercent;
 
   Controller() {
+    decimalUsed = false;
     individualPrices = List<double>();
     totalString = "\$";
     billString = "\$";
@@ -107,6 +109,7 @@ class Controller {
     billString = "\$";
     _total = 0;
     totalString = "\$";
+    decimalUsed = false;
   }
 
   void splitBillEvenly() {

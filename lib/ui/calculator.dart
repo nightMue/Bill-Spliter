@@ -36,9 +36,13 @@ class _CalculatorState extends State<Calculator> {
 
   _pressedDecimal() 
   {
-    Vibrate.feedback(FeedbackType.light);
-    logicController.updateBillKeyPress(".");
-    widget.notifyParent();
+    if(!logicController.decimalUsed)
+    {
+      Vibrate.feedback(FeedbackType.light);
+      logicController.updateBillKeyPress(".");
+      widget.notifyParent();
+      logicController.decimalUsed = true;
+    }
   }
 
   _pressedBack() 
