@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FriendView extends StatefulWidget {
-  FriendView(this.index, this.color, this.price);
+  FriendView(this.index, this.color, this.price, this.isLastOccurance);
 
   final Color color;
   final String index;
   final String price;
+  final bool isLastOccurance;
 
   @override
   _FriendViewState createState() => _FriendViewState();
@@ -50,6 +51,7 @@ class _FriendViewState extends State<FriendView> {
                   ],
                 ),
               ),
+              if(!widget.isLastOccurance)
               Align(
                   alignment: Alignment.bottomCenter,
                   child: GestureDetector(

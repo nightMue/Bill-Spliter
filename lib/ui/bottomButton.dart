@@ -106,6 +106,7 @@ class _BottomButtonState extends State<BottomButton> {
     );
   }
 
+  /**
   void _showToast(BuildContext context)
   {
     final scaffold = Scaffold.of(context);
@@ -121,5 +122,5 @@ class _BottomButtonState extends State<BottomButton> {
         backgroundColor: Color.fromRGBO(57, 153, 66, 0.5),
       )
     );
-  }
+  } */
 }
