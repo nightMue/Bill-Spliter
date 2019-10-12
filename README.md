@@ -3,7 +3,7 @@
 A cross plateform app for both Android and IOS created with Flutter/Dart 
 that allows you to calculate how much each person owes on a split bill with ease.
 
-![](BillSpliter.gif)
+![](demo.gif)
 
 ## Contact Me
 - [LinkedIn - Nicholas Mueller](https://www.linkedin.com/in/nicholas-mueller-b12006b6/)
